@@ -22,6 +22,22 @@ pipx inject ansible-core requests pyutils
 pipx install ansible-lint
 ```
 
+install  KVM/QEMU for working with libvirt
+```bash
+sudo apt-get install qemu-system-x86 libvirt-daemon-system libvirt-clients bridge-utils
+
+sudo apt-get install ansible
+ansible-galaxy collection install community.libvirt
+ansible-galaxy collection install -r requirements.yml
+sudo usermod -aG libvirt $(whoami)
+echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+echo $PATH
+sudo apt-get install libvirt-dev python3-libvirt
+sudo apt-get install python3-lxml
+sudo snap install lxd
+
+
 ```bash
 pipx install --include-deps molecule
 ```
@@ -69,6 +85,7 @@ OR
 
     ```bash
       ansible-galaxy install -r requirements.yml
+      ansible-galaxy collection install community.general
     ```
 
 ---
